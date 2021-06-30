@@ -1,4 +1,4 @@
-package br.com.api.store.modelo;
+package br.com.api.store.model;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

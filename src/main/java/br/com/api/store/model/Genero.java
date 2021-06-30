@@ -1,4 +1,4 @@
-package br.com.api.store.modelo;
+package br.com.api.store.model;
 
 public enum Genero {
 	FEMININO,

@@ -1,4 +1,4 @@
-package br.com.api.store.modelo;
+package br.com.api.store.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

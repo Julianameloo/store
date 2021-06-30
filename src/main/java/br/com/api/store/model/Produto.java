@@ -1,4 +1,4 @@
-package br.com.api.store.modelo;
+package br.com.api.store.model;
 
 import java.math.BigDecimal;
 
@@ -23,12 +23,31 @@ public class Produto {
 	@Enumerated(EnumType.STRING)
 	@ManyToOne
 	private Categoria categoria;
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Estoque estoque;
 	private BigDecimal preco;
 
+	public Produto () {
+		
+	}
+	
+	public Produto (String nome, BigDecimal preco, Categoria categoria, Estoque estoque) {
+		this.nome = nome;
+		this.preco = preco;
+		this.categoria = categoria;
+		this.estoque = estoque;
+	}
+	
 	public String getNome() {
 		return nome;
+	}
+
+	public Estoque getEstoque() {
+		return estoque;
+	}
+
+	public void setEstoque(Estoque estoque) {
+		this.estoque = estoque;
 	}
 
 	public void setNome(String nome) {
@@ -51,7 +70,7 @@ public class Produto {
 		this.preco = preco;
 	}
 
-	public int getIdProduto() {
+	public int getId() {
 		return id;
 	}
 

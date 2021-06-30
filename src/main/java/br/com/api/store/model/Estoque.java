@@ -1,4 +1,4 @@
-package br.com.api.store.modelo;
+package br.com.api.store.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,23 +7,19 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "categorias")
-public class Categoria {
+@Table(name = "estoques")
+public class Estoque {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String nome;
+	private int quantidade;
 
-	public String getNome() {
-		return nome;
+	public int getQuantidade() {
+		return quantidade;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public int getIdCategoria() {
-		return id;
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
 	}
 
 }
