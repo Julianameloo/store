@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="clientes")
+@Table(name = "clientes")
 public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,11 +26,29 @@ public class Cliente {
 	private String senha;
 	private String cartaoCredito;
 
+	public Cliente() {
+
+	}
+
+	public Cliente(String nome, String sobrenome, Genero genero, String endereco,
+			String cidade, String estado, String cep, String email, String senha, String cartaoCredito) {
+		this.nome = nome;
+		this.sobrenome = sobrenome;
+		this.genero = genero;
+		this.endereco = endereco;
+		this.cidade = cidade;
+		this.estado = estado;
+		this.cep = cep;
+		this.email = email;
+		this.senha = senha;
+		this.cartaoCredito = cartaoCredito;
+	}
+
 	public String getNome() {
 		return nome;
 	}
 
-	public int getIdCliente() {
+	public int getId() {
 		return id;
 	}
 

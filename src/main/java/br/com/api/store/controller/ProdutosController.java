@@ -73,6 +73,7 @@ public class ProdutosController {
 		Optional<Produto> optionalProduto = produtoRepository.findById(id);
 		if (optionalProduto.isPresent()) {
 			Produto produto = produtoForm.atualizarProduto(id, produtoRepository);
+			produtoRepository.save(produto);
 			return ResponseEntity.ok(produto);
 		}
 		return ResponseEntity.notFound().build();
