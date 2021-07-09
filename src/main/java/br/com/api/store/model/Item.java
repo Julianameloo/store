@@ -17,24 +17,26 @@ public class Item {
 	private int id;
 	@ManyToOne
 	private Produto produto;
-	private BigDecimal preco;
 	private int quantidade;
 	private BigDecimal precoTotal;
+	
 
+	public Item() {
+
+	}
+
+	public Item(Produto produto, int quantidade) {
+		this.produto = produto;
+		this.quantidade = quantidade;
+		this.precoTotal = (new BigDecimal(quantidade)).multiply(produto.getPreco());
+	}
+	
 	public Produto getProduto() {
 		return produto;
 	}
 
 	public void setProduto(Produto produto) {
 		this.produto = produto;
-	}
-
-	public BigDecimal getPreco() {
-		return preco;
-	}
-
-	public void setPreco(BigDecimal preco) {
-		this.preco = preco;
 	}
 
 	public int getQuantidade() {

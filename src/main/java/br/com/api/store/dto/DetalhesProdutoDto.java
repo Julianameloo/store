@@ -18,10 +18,10 @@ public class DetalhesProdutoDto {
 		this.id = produto.getId();
 		this.nome = produto.getNome();
 		this.preco = produto.getPreco();
-		//Categoria categoriaClass = produto.getCategoria();
-		//this.categoria = categoriaClass.getNome();
-		//Estoque estoque = produto.getEstoque();
-		//this.quantidadeDisponivel = estoque.getQuantidade();
+		Categoria categoriaClass = produto.getCategoria();
+		this.categoria = categoriaClass.getNome();
+		Estoque estoque = produto.getEstoque();
+		this.quantidadeDisponivel = estoque.getQuantidade();
 	}
 
 	public int getId() {

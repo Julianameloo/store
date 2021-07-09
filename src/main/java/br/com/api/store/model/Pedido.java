@@ -25,11 +25,21 @@ public class Pedido {
 	private int id;
 	@ManyToOne
 	private Cliente cliente;
-	@OneToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "pedido_id")
 	private List<Item> itens = new ArrayList<>();
 	private BigDecimal preco;
 	private LocalDate dataPedido = LocalDate.now();
+
+	public Pedido() {
+
+	}
+
+	public Pedido(Cliente cliente, List<Item> itens, BigDecimal preco) {
+		this.cliente = cliente;
+		this.itens = itens;
+		this.preco = preco;
+	}
 
 	public Cliente getCliente() {
 		return cliente;
@@ -63,7 +73,7 @@ public class Pedido {
 		this.dataPedido = dataPedido;
 	}
 
-	public int getIdPedido() {
+	public int getId() {
 		return id;
 	}
 

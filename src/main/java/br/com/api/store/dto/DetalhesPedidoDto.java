@@ -1,18 +1,24 @@
 package br.com.api.store.dto;
 
-import org.springframework.data.domain.Page;
+import java.time.LocalDate;
+import java.util.List;
 
+import br.com.api.store.model.Item;
 import br.com.api.store.model.Pedido;
 
-public class PedidoDto {
+public class DetalhesPedidoDto {
 	private int id;
 	private int cliente_id;
 	private String preco;
+	private LocalDate data;
+	private List<Item> itens;
 
-	public PedidoDto (Pedido pedido) {
+	public DetalhesPedidoDto (Pedido pedido) {
 		this.id = pedido.getId();
 		this.cliente_id = pedido.getCliente().getId();
 		this.preco = pedido.getPreco().toString();
+		this.data = pedido.getDataPedido();
+		this.itens = pedido.getItens();
 	}
 	
 	public int getId() {
@@ -38,9 +44,20 @@ public class PedidoDto {
 	public void setPreco(String preco) {
 		this.preco = preco;
 	}
-	
-	public static Page<PedidoDto> converterParaPedidoDto(Page<Pedido> pedidos) {
-		return pedidos.map(PedidoDto::new);
+
+	public LocalDate getData() {
+		return data;
 	}
 
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public List<Item> getItens() {
+		return itens;
+	}
+
+	public void setItens(List<Item> itens) {
+		this.itens = itens;
+	}
 }

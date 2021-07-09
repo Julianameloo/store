@@ -22,6 +22,7 @@ public class CategoriaExistenteValidator implements ConstraintValidator<Categori
     @Override
     public boolean isValid(String nomeCategoria,
       ConstraintValidatorContext cxt) {
+    	if (nomeCategoria ==  null) return false;
         Categoria categoria = categoriaRepository.findByNome(nomeCategoria);
         return categoria != null;
         
