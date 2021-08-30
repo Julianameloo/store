@@ -49,7 +49,7 @@ public class PedidosController {
 	public ResponseEntity<?> criar(@RequestBody @Valid PedidoForm pedidoForm, UriComponentsBuilder uriBuilder) {
 		Pedido pedido = pedidoForm.converterParaPedido(clienteRepository, produtoRepository);
 		pedidoRepository.save(pedido);
-		
+
 		URI uri = uriBuilder.path("/pedidos/{id}").buildAndExpand(pedido.getId()).toUri();
 		return ResponseEntity.created(uri).body(new DetalhesPedidoDto(pedido));
 	}
@@ -77,24 +77,24 @@ public class PedidosController {
 	@PutMapping("/itens/{id}")
 	public ResponseEntity<Item> atualizarItens(@PathVariable int id, @RequestBody @Valid ItemForm itemForm) {
 		Optional<Item> optionalItem = itemRepository.findById(id);
-		
+
 		if (optionalItem.isPresent()) {
 			Item item = itemForm.atualizarItem(id, itemRepository, produtoRepository);
 			itemRepository.save(item);
-			
+
 			return ResponseEntity.ok(item);
 		}
-		
+
 		return ResponseEntity.notFound().build();
 	}
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<PedidoDto> deletar(@PathVariable int id) {
 		Optional<Pedido> pedido = pedidoRepository.findById(id);
-		
+
 		if (pedido.isPresent()) {
 			pedidoRepository.deleteById(id);
-			
+
 			return ResponseEntity.ok(new PedidoDto(pedido.get()));
 		}
 		return ResponseEntity.notFound().build();

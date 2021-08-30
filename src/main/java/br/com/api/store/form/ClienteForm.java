@@ -8,6 +8,7 @@ import br.com.api.store.anotations.GeneroNaoExistente;
 import br.com.api.store.anotations.UsuarioExistente;
 import br.com.api.store.model.Cliente;
 import br.com.api.store.model.Genero;
+import br.com.api.store.model.Perfil;
 import br.com.api.store.repository.ClienteRepository;
 
 public class ClienteForm {
@@ -114,7 +115,7 @@ public class ClienteForm {
 
 	public Cliente converterParaCliente(ClienteRepository clienteRepository) {
 		return new Cliente(this.nome, this.sobrenome, Enum.valueOf(Genero.class, genero.toUpperCase()), endereco, cidade, estado, cep,
-				email, senha, cartaoCredito);
+				email, senha, cartaoCredito, new Perfil("CLIENT"));
 	}
 
 }
